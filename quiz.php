@@ -61,12 +61,6 @@
                 }
             }, 1000);
         }
-       // var myVar = <
-      // ?php echo json_encode($aaa) ?
-       //>;
-//if(myVar){
-  ///  console.log("nie");
-//}
     </script>
 <?php
    include 'lacz.php';
@@ -78,9 +72,6 @@
     $id_pytania = $_POST['id_pytania'];
     if ($result_text) {
         $sql ="UPDATE `zdobytepunkty` SET `punkty` = `punkty` + 1;";
-        mysqli_query($conn, $sql);
-        $sql =" UPDATE `klikniecia` SET `ilosc`=`ilosc`+1 WHERE 1;";
-
         mysqli_query($conn, $sql);
         $sql = "DELETE FROM pytania WHERE id = $id_pytania";
        mysqli_query($conn, $sql);
@@ -115,26 +106,12 @@ if (mysqli_num_rows($result) > 0) {
 
     }
 }
-
-$sql = "SELECT * FROM klikniecia";
-$result = mysqli_query($conn, $sql);
-
-
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $ilosc = $row["ilosc"];
-        $max = $row["max"];
-    }
-}
-$result = ($ilosc >=$max ) ? true : false;
-if($result){
-  $aaa = true;
-}
-
 mysqli_close($conn);
 ?>
 <form action="wynik.php" method="post">
-    <button type="submit">pokaż wyniki</button>
+   <center>
+   <button type="submit">pokaż wyniki</button>
+   </center>
 </form>
 </body>
 </html>
